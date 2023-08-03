@@ -1,0 +1,25 @@
+<div class="flex flex-col items-center min-h-screen mt-5">
+  <div class="mb-4 flex gap-5">
+    <input
+      type="number"
+      [formControl]="searchYear"
+      name="searchYear"
+      placeholder="Enter year ex. 2015"
+      class="p-2 border rounded"
+    />
+    <button
+      (click)="searchMovies()"
+      class="px-4 py-2 bg-blue-500 text-white rounded loading"
+    >
+      Search
+    </button>
+  </div>
+
+  <ul data-test-id="movieList" *ngIf="movies().length > 0" class="mb-4">
+    <li *ngFor="let movie of movies()" class="mb-2">{{ movie.Title }}</li>
+  </ul>
+
+  <div data-test-id="noResult" *ngIf="noResults()" class="text-red-500">
+    No Results Found
+  </div>
+</div>
